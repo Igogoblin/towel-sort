@@ -37,6 +37,7 @@
 //     //     cur.sort((a, b) => (!(i & 1) ? a - b : b - a)).map((e) => acc.push(e));
 //     //     return acc;
 //     // }, []);
+
 //     if (matrix == undefined) {
 //         return [];
 //       }
@@ -53,19 +54,19 @@
 //       }
 //       return towelSortArr;
 // }
-// Перерешай !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 // module.exports = function towelSort(matrix) {
 //     if (matrix == undefined) {
 //         return [];
 //       }
-//     // Перерешай !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //       let towelSortArr = [];
 //       for ( let i = 0; i < matrix.length; i++)
 //       if (i % 2 === 0) {
 //        for( let j = 0; j < matrix[i].length; j++){
 //         towelSortArr.push( matrix[i][j]);
 //        }}
-//           // Перерешай !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //        else {
 //         for (let j = (matrix[i].length - 1); j >= 0; j--) {
 //           towelSortArr.push(matrix[i][j]);
@@ -73,22 +74,30 @@
 //       }
 //       return towelSortArr;
 // };
-// Перерешай !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 module.exports = function towelSort(matrix) {
     if (!matrix) {
         return [];
     }
 
     const ourArray = [];
+    let countArray = [];
     for (let i = 0; i < matrix.length; i++) {
         if (i % 2 === 0) {
             for (let j = 0; j < matrix[i].length; j++) {
                 ourArray.push(matrix[i][j]);
             }
-        } else {
-            for (let j = matrix[i].length - 1; j >= 0; j--) {
-                ourArray.push(matrix[i][j]);
-            }
+        }
+        // else {
+        //     for (let j = 0; j <= matrix[i].length; j++) {
+        //         ourArray.unshift(matrix[i][j]);
+        //     }
+        //     // for (let j = matrix[i].length - 1; j >= 0; j--) {
+        //     //     ourArray.push(matrix[i][j]);
+        //     // }
+        // }
+        else if (i % 2 !== 0) {
+            ourArray.push(...matrix[i].reverse());
         }
     }
     return ourArray;
