@@ -81,7 +81,6 @@ module.exports = function towelSort(matrix) {
     }
 
     const ourArray = [];
-    let countArray = [];
     for (let i = 0; i < matrix.length; i++) {
         if (i % 2 === 0) {
             for (let j = 0; j < matrix[i].length; j++) {
